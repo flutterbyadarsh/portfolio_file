@@ -166,6 +166,14 @@ class PortfolioProjectCard extends StatelessWidget {
         return Icons.wb_sunny_outlined;
       case ProjectVisualStyle.favouritePlace:
         return Icons.location_on_outlined;
+      case ProjectVisualStyle.todoApp:
+        return Icons.checklist_rounded;
+      case ProjectVisualStyle.profilePage:
+        return Icons.account_circle_outlined;
+      case ProjectVisualStyle.currencyConvert:
+        return Icons.currency_exchange_rounded;
+      case ProjectVisualStyle.shoesApp:
+        return Icons.shopping_bag_outlined;
     }
   }
 }
@@ -498,6 +506,211 @@ class _ProjectBannerArtwork extends StatelessWidget {
                   'SQLite Offline',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 7.5, color: Colors.white54),
+                ),
+              ),
+            ],
+          ),
+        );
+      case ProjectVisualStyle.todoApp:
+        return _MiniPhoneShell(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Tasks • Today',
+                    style: TextStyle(
+                      fontSize: 8.5,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Icon(
+                    Icons.notifications_active_outlined,
+                    size: 10,
+                    color: AerospaceTheme.accentScarletBright,
+                  ),
+                ],
+              ),
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _MiniBar(widthFactor: 0.92, color: AerospaceTheme.accentGreen),
+                  SizedBox(height: 6),
+                  _MiniBar(
+                    widthFactor: 0.72,
+                    color: AerospaceTheme.accentScarletBright,
+                  ),
+                  SizedBox(height: 6),
+                  _MiniBar(widthFactor: 0.82, color: Colors.white30),
+                ],
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 3),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: const Text(
+                  'Firebase Auth + Alerts',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 7.5, color: Colors.white54),
+                ),
+              ),
+            ],
+          ),
+        );
+      case ProjectVisualStyle.profilePage:
+        return _MiniPhoneShell(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(height: 2),
+              CircleAvatar(
+                radius: 16,
+                backgroundColor:
+                    AerospaceTheme.accentScarlet.withValues(alpha: 0.25),
+                child: const Icon(
+                  Icons.person_rounded,
+                  size: 18,
+                  color: Colors.white,
+                ),
+              ),
+              const Column(
+                children: [
+                  _MiniBar(widthFactor: 0.65, color: Colors.white70),
+                  SizedBox(height: 5),
+                  _MiniBar(widthFactor: 0.85, color: Colors.white24),
+                ],
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 3),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: const Text(
+                  'Edit Profile • Saved',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 7.5, color: Colors.white54),
+                ),
+              ),
+            ],
+          ),
+        );
+      case ProjectVisualStyle.currencyConvert:
+        return _MiniPhoneShell(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'USD → INR',
+                    style: TextStyle(
+                      fontSize: 8.5,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Icon(
+                    Icons.swap_horiz_rounded,
+                    size: 12,
+                    color: AerospaceTheme.accentScarletBright,
+                  ),
+                ],
+              ),
+              const Center(
+                child: Text(
+                  '\$100 = ₹8,420',
+                  style: TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 3),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: const Text(
+                  'Instant Rate Engine',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 7.5, color: Colors.white54),
+                ),
+              ),
+            ],
+          ),
+        );
+      case ProjectVisualStyle.shoesApp:
+        return _MiniPhoneShell(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Sneaker Store',
+                    style: TextStyle(
+                      fontSize: 8.5,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 11,
+                    color: AerospaceTheme.accentScarletBright,
+                  ),
+                ],
+              ),
+              Container(
+                height: 44,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF132742),
+                  borderRadius: BorderRadius.circular(6),
+                  border: Border.all(
+                    color: AerospaceTheme.accentScarlet.withValues(alpha: 0.4),
+                  ),
+                ),
+                alignment: Alignment.center,
+                child: const Text(
+                  'AIR • \$149',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 3),
+                decoration: BoxDecoration(
+                  color: AerospaceTheme.accentScarlet,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: const Text(
+                  'Add to Cart',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 7.5,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],

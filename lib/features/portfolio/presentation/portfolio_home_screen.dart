@@ -1371,7 +1371,7 @@ class _PortfolioHomeScreenState extends State<PortfolioHomeScreen>
                   ),
                   onSecondaryAction: () => launchExternalLink(
                     context,
-                    PortfolioData.githubUrl,
+                    project.repoUrl ?? PortfolioData.githubUrl,
                   ),
                 );
               }).toList(),

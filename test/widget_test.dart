@@ -201,9 +201,13 @@ void main() {
     await tester.pump(const Duration(milliseconds: 450));
     await tester.pump();
     expect(find.text('INDEX REV. 2026.4'), findsOneWidget);
-    expect(find.text('ALL (5)'), findsOneWidget);
-    expect(find.text('MOBILE APPS (4)'), findsOneWidget);
+    expect(find.text('ALL (9)'), findsOneWidget);
+    expect(find.text('MOBILE APPS (8)'), findsOneWidget);
     expect(find.text('AI INTEGRATIONS (1)'), findsOneWidget);
+    expect(find.text('Todo App'), findsOneWidget);
+    expect(find.text('Profile Page App'), findsOneWidget);
+    expect(find.text('Currency Converter App'), findsOneWidget);
+    expect(find.text('E-Commerce Shoes App'), findsOneWidget);
     await tester.tap(find.text('AI INTEGRATIONS (1)'));
     await tester.pump();
     expect(find.text('AI Intern Assessment App'), findsOneWidget);
@@ -252,8 +256,18 @@ void main() {
     final aiTab = find.text('AI Integrations (1)');
     await tester.ensureVisible(aiTab);
     await tester.pump();
-    expect(find.text('All (5)'), findsOneWidget);
-    expect(find.text('Mobile Apps (4)'), findsOneWidget);
+    expect(find.text('All (9)'), findsOneWidget);
+    expect(find.text('Mobile Apps (8)'), findsOneWidget);
+    expect(
+      PortfolioData.projects.where((p) => p.repoUrl != null).length,
+      6,
+    );
+    expect(
+      PortfolioData.projects.any((p) =>
+          p.title.toLowerCase().contains('money') ||
+          p.title.toLowerCase().contains('auth')),
+      isFalse,
+    );
     await tester.tap(aiTab);
     await tester.pump();
     expect(find.text('AI Intern Assessment App'), findsOneWidget);

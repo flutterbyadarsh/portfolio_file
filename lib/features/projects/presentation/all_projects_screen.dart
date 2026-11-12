@@ -286,7 +286,7 @@ class _AllProjectsScreenState extends State<AllProjectsScreen> {
                                   ),
                                   onSecondaryAction: () => launchExternalLink(
                                     context,
-                                    PortfolioData.githubUrl,
+                                    item.repoUrl ?? PortfolioData.githubUrl,
                                   ),
                                 );
                               }).toList(),

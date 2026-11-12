@@ -99,6 +99,10 @@ enum ProjectVisualStyle {
   aiAssessment,
   weatherApp,
   favouritePlace,
+  todoApp,
+  profilePage,
+  currencyConvert,
+  shoesApp,
 }
 
 class ProjectItem {
@@ -110,6 +114,7 @@ class ProjectItem {
   final List<String> tags;
   final String secondaryActionLabel;
   final ProjectVisualStyle visualStyle;
+  final String? repoUrl;
 
   const ProjectItem({
     required this.title,
@@ -120,6 +125,7 @@ class ProjectItem {
     required this.tags,
     required this.secondaryActionLabel,
     required this.visualStyle,
+    this.repoUrl,
   });
 }
 
@@ -415,10 +421,11 @@ class PortfolioData {
       badge: 'REAL-TIME RTC ENGINE',
       version: 'WebRTC P2P',
       description:
-          'Real-time audio and video calling application built with Agora RTC engine, WebRTC protocols, Firebase Cloud Messaging, and native CallKit integration.',
+          'Real-time audio and video calling application designed for low-latency communication using Agora RTC, WebRTC protocols, and Firebase signaling.',
       tags: ['Flutter', 'WebRTC', 'Agora RTC', 'Firebase'],
       secondaryActionLabel: 'Architecture',
       visualStyle: ProjectVisualStyle.connectCall,
+      repoUrl: 'https://github.com/flutterbyadarsh/connect_call',
     ),
     ProjectItem(
       title: 'AI Intern Assessment App',
@@ -437,10 +444,59 @@ class PortfolioData {
       badge: 'LIVE TELEMETRY & REST API',
       version: 'Forecast UI',
       description:
-          'Real-time weather forecasting mobile app consuming RESTful meteorological APIs with responsive glassmorphic forecasts and clean state management.',
-      tags: ['Flutter', 'REST APIs', 'Riverpod', 'Clean Arch'],
+          'Updated Flutter Weather App featuring live meteorological data, hourly updates, and 5-day forecasts with a clean dark UI.',
+      tags: ['Flutter', 'REST APIs', 'Geolocator', 'Dark UI'],
       secondaryActionLabel: 'Source Code',
       visualStyle: ProjectVisualStyle.weatherApp,
+      repoUrl: 'https://github.com/flutterbyadarsh/weather_update_v2',
+    ),
+    ProjectItem(
+      title: 'Todo App',
+      category: 'Mobile Apps',
+      badge: 'FIREBASE + NOTIFICATIONS',
+      version: 'Dart • Flutter',
+      description:
+          'Flutter-based Todo app with Firebase authentication, task management, categories, priority levels, due dates, search, filtering, and local notifications.',
+      tags: ['Flutter', 'Firebase Auth', 'Local Notifications', 'Search'],
+      secondaryActionLabel: 'Source Code',
+      visualStyle: ProjectVisualStyle.todoApp,
+      repoUrl: 'https://github.com/flutterbyadarsh/Todo_app',
+    ),
+    ProjectItem(
+      title: 'Profile Page App',
+      category: 'Mobile Apps',
+      badge: 'RESPONSIVE PROFILE UI',
+      version: 'SharedPrefs',
+      description:
+          'Modern, responsive User Profile application built with Flutter featuring clean UI/UX for displaying and editing user profiles with persistent local storage.',
+      tags: ['Flutter', 'UI/UX', 'SharedPreferences', 'Responsive'],
+      secondaryActionLabel: 'Source Code',
+      visualStyle: ProjectVisualStyle.profilePage,
+      repoUrl: 'https://github.com/flutterbyadarsh/profile_page',
+    ),
+    ProjectItem(
+      title: 'Currency Converter App',
+      category: 'Mobile Apps',
+      badge: 'MULTI-CURRENCY ENGINE',
+      version: 'Material UI',
+      description:
+          'Cross-platform currency converter mobile application designed for instant rate calculations with a crisp, intuitive Flutter Material interface.',
+      tags: ['Flutter', 'Dart', 'Conversion Logic', 'Material 3'],
+      secondaryActionLabel: 'Source Code',
+      visualStyle: ProjectVisualStyle.currencyConvert,
+      repoUrl: 'https://github.com/flutterbyadarsh/currency_convert_app',
+    ),
+    ProjectItem(
+      title: 'E-Commerce Shoes App',
+      category: 'Mobile Apps',
+      badge: 'SHOPPING FLOW & CART UI',
+      version: 'Sliver UI',
+      description:
+          'Flutter e-commerce footwear application featuring category browsing, detailed product showcases, Sliver scroll layouts, and interactive cart management.',
+      tags: ['Flutter', 'Provider', 'Slivers', 'E-Commerce UI'],
+      secondaryActionLabel: 'Source Code',
+      visualStyle: ProjectVisualStyle.shoesApp,
+      repoUrl: 'https://github.com/flutterbyadarsh/Flutter_Shoes_App',
     ),
     ProjectItem(
       title: 'Favourite Place',
