@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adarsh Mahesh Gupta | Flutter Developer & UI/UX Perfectionist</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-headline: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    body {
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    .font-headline {
+      font-family: var(--font-headline);
+    }
+
+    .font-mono-code {
+      font-family: var(--font-mono);
+    }
+
+    /* -------------------------------------------------------------
+       ZERO-GRAVITY / ANTI-GRAVITY FLOATING ENGINE
+       Organic, desynchronized levitation for orbiting badges & avatar
+       ------------------------------------------------------------- */
+    @keyframes antiGravityFloat1 {
+      0%, 100% {
+        transform: translateY(0px) rotate(-1.5deg);
+      }
+      50% {
+        transform: translateY(-14px) rotate(1.5deg);
+      }
+    }
+
+    @keyframes antiGravityFloat2 {
+      0%, 100% {
+        transform: translateY(0px) rotate(1.2deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(-2deg);
+      }
+    }
+
+    @keyframes antiGravityFloat3 {
+      0%, 100% {
+        transform: translateY(0px) rotate(-1deg);
+      }
+      50% {
+        transform: translateY(-11px) rotate(1.2deg);
+      }
+    }
+
+    @keyframes breathingAvatar {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+        box-shadow: 0 16px 36px -8px rgba(10, 25, 47, 0.25), 0 0 0 1px rgba(10, 25, 47, 0.1);
+      }
+      50% {
+        transform: translateY(-7px) scale(1.015);
+        box-shadow: 0 28px 50px -10px rgba(220, 38, 38, 0.25), 0 0 35px -5px rgba(220, 38, 38, 0.3), 0 0 0 1px rgba(220, 38, 38, 0.4);
+      }
+    }
+
+    @keyframes pulseOrbitRing {
+      0%, 100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 0.4;
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg);
+        opacity: 0.75;
+      }
+    }
+
+    @keyframes ambientDrift1 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(30px, -35px) scale(1.1); }
+    }
+
+    @keyframes ambientDrift2 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(-35px, -25px) scale(0.95); }
+    }
+
+    .badge-float-flutter {
+      animation: antiGravityFloat1 4.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      will-change: transform;
+    }
+
+    .badge-float-cgpa {
+      animation: antiGravityFloat2 5.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      animation-delay: -2.1s; /* Desynchronized phase */
+      will-change: transform;
+    }
+
+    .badge-float-cleanarch {
+      animation: antiGravityFloat3 3.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      animation-delay: -1.0s; /* Desynchronized phase */
+      will-change: transform;
+    }
+
+    .avatar-breathing-effect {
+      animation: breathingAvatar 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      will-change: transform, box-shadow;
+    }
+
+    .orbit-pulse-anim {
+      animation: pulseOrbitRing 45s linear infinite;
+    }
+
+    .particle-drift-1 {
+      animation: ambientDrift1 12s ease-in-out infinite;
+    }
+
+    .particle-drift-2 {
+      animation: ambientDrift2 16s ease-in-out infinite;
+    }
+
+    /* Glassmorphic Cards */
+    .glass-dark {
+      background: rgba(13, 28, 50, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-light {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      box-shadow: 0 10px 25px -5px rgba(10, 25, 47, 0.06), 0 2px 4px -1px rgba(10, 25, 47, 0.03);
+    }
+
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070d18;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #dc2626;
+    }
+  </style>
+</head>
+<body id="appBody" class="bg-[#070D18] text-slate-100 min-h-screen selection:bg-red-500 selection:text-white transition-colors duration-300">
+
+  <!-- ==========================================
+       TOP NAVIGATION BAR
+       ========================================== -->
+  <header id="topNavbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#070D18]/85 backdrop-blur-md border-b border-white/5 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <span class="font-headline font-bold text-xl md:text-2xl tracking-tight text-white nav-logo-text group-hover:text-red-500 transition-colors">
+          Adarsh<span class="text-red-500">.</span>Gupta
+        </span>
+        <span class="hidden sm:inline-block text-[11px] font-mono-code px-2 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20">
+          v3.24
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300 nav-links">
+        <a href="#about" class="hover:text-red-400 transition-colors">About</a>
+        <a href="#skills" class="hover:text-red-400 transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-red-400 transition-colors">Experience</a>
+        <a href="#journey" class="hover:text-red-400 transition-colors">Journey</a>
+        <a href="#projects" class="hover:text-red-400 transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-red-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Actions: Theme Toggle & CTA -->
+      <div class="flex items-center gap-3">
+        <!-- Light / Dark Toggle -->
+        <button 
+          id="themeToggleBtn" 
+          onclick="toggleGlobalTheme()" 
+          title="Toggle Light / Dark Mode"
+          class="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 hover:border-red-500/40 bg-white/5 hover:bg-white/10 transition text-slate-300 hover:text-white"
+        >
+          <span id="themeToggleIcon">☀️</span>
+        </button>
+
+        <!-- Get In Touch Button -->
+        <a 
+          href="#contact" 
+          class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs md:text-sm font-semibold bg-red-600 hover:bg-red-700 text-white transition shadow-lg shadow-red-600/30"
+        >
+          <span>Get in Touch</span>
+          <span>↗</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button 
+          id="mobileMenuBtn" 
+          onclick="toggleMobileMenu()"
+          class="lg:hidden w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 bg-white/5 text-slate-300"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer" class="hidden lg:hidden px-6 pt-4 pb-6 bg-[#0B1526] border-b border-white/10 space-y-3 text-sm">
+      <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-red-400">About</a>
+      <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-red-400">Skills</a>
+      <a href="#experience" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-red-400">Experience</a>
+      <a href="#journey" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-red-400">Journey</a>
+      <a href="#projects" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-red-400">Projects</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-red-400">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" onclick="toggleMobileMenu()" class="block text-center py-2.5 rounded-xl bg-red-600 text-white font-medium">
+          Get in Touch ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO SECTION WITH ANTI-GRAVITY LEVITATION
+       ========================================== -->
+  <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    
+    <!-- Ambient Space Glows & Drifting Particles -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <!-- Scarlet Deep Glow Orb -->
+      <div class="particle-drift-1 absolute -top-16 -right-16 w-96 h-96 md:w-[500px] md:h-[500px] rounded-full bg-red-600/12 blur-[120px]"></div>
+      <!-- Deep Navy Cosmic Orb -->
+      <div class="particle-drift-2 absolute bottom-0 -left-20 w-[450px] h-[450px] rounded-full bg-blue-900/15 blur-[130px]"></div>
+      <!-- Fine floating stars -->
+      <div class="particle-drift-1 absolute top-1/3 left-1/6 w-1.5 h-1.5 rounded-full bg-red-400/50"></div>
+      <div class="particle-drift-2 absolute top-2/3 right-1/4 w-2 h-2 rounded-full bg-blue-400/40"></div>
+      <div class="particle-drift-1 absolute bottom-1/4 left-1/3 w-1 h-1 rounded-full bg-white/40"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Column: Bio & Headings -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          
+          <!-- System Status Pill -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+            <span>AVAILABLE FOR OPPORTUNITIES</span>
+            <span class="text-slate-500">•</span>
+            <span class="font-mono-code text-[11px] text-slate-400">NOIDA, INDIA (IST)</span>
+          </div>
+
+          <div class="space-y-2">
+            <p class="text-xs md:text-sm uppercase tracking-widest font-semibold text-slate-400">
+              Digital Product Architect & Systems Engineer
+            </p>
+            <h1 class="font-headline text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.1] hero-main-name">
+              Adarsh Mahesh <span class="text-red-500">Gupta.</span>
+            </h1>
+            <p class="font-headline text-lg sm:text-xl md:text-2xl font-semibold text-slate-300 hero-sub-title">
+              Flutter App Developer <span class="text-red-500">• UI/UX Enthusiast</span>
+            </p>
+          </div>
+
+          <p class="text-sm md:text-base text-slate-400 leading-relaxed max-w-xl hero-bio-copy">
+            Crafting performant, production-grade cross-platform applications with Flutter, clean architecture, and delightful interactive user experiences. B.Tech CSE student passionate about transforming complex ideas into intuitive, pixel-perfect digital ecosystems.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#contact" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm transition shadow-lg shadow-red-600/30">
+              Order Stack / Hire ↗
+            </a>
+            <a href="#projects" class="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 font-semibold text-sm transition sec-btn">
+              View Projects ⊞
+            </a>
+            <a href="https://github.com/adarsh-dev" target="_blank" class="px-4 py-3 rounded-xl bg-transparent hover:bg-white/5 text-slate-400 hover:text-white text-sm transition">
+              Follow me ↗
+            </a>
+          </div>
+
+          <!-- Social Links Bar -->
+          <div class="flex items-center gap-3 pt-4 border-t border-white/5 text-xs text-slate-400">
+            <span class="font-medium text-slate-500">Connect:</span>
+            <a href="https://github.com/adarsh-dev" target="_blank" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition" title="GitHub">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/adarsh-gupta" target="_blank" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition" title="LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="mailto:contact@adarsh.dev" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition" title="Email">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+            <a href="https://leetcode.com" target="_blank" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition" title="LeetCode (100+ Solved)">
+              <span class="font-mono-code font-bold text-xs">{ }</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Central Breathing Avatar & Orbiting Badges -->
+        <div class="lg:col-span-5 flex items-center justify-center relative py-10 lg:py-6">
+          <div class="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[420px] md:h-[420px] flex items-center justify-center">
+
+            <!-- Outer Concentric Orbit Track -->
+            <div class="absolute w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] rounded-full border border-dashed border-slate-700/60 orbit-pulse-anim pointer-events-none" id="outerOrbit"></div>
+            
+            <!-- Inner Glowing Orbit Track -->
+            <div class="absolute w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] rounded-full border border-red-500/20 pointer-events-none" id="innerOrbit"></div>
+
+            <!-- Central Breathing Avatar -->
+            <div class="avatar-breathing-effect relative w-44 h-44 sm:w-52 sm:h-52 rounded-full p-1.5 bg-gradient-to-tr from-red-600 via-slate-800 to-blue-950 shadow-2xl z-20">
+              <div class="w-full h-full rounded-full overflow-hidden bg-slate-900 border-2 border-slate-800/90 relative">
+                <!-- Profile Image -->
+                <img 
+                  src="assets/images/adarsh_profile.jpg" 
+                  alt="Adarsh Mahesh Gupta" 
+                  class="w-full h-full object-cover"
+                >
+              </div>
+
+              <!-- Available Badge on Avatar -->
+              <div class="absolute bottom-2 right-4 flex items-center gap-1.5 bg-slate-950/95 text-[11px] font-semibold text-emerald-400 px-2.5 py-0.5 rounded-full border border-emerald-500/30 shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Active</span>
+              </div>
+            </div>
+
+            <!-- ==============================================
+                 FLOATING BADGE 1: "Flutter Dev" (Top-Left)
+                 ============================================== -->
+            <div class="badge-float-flutter absolute -top-2 left-0 sm:top-2 sm:left-2 z-30">
+              <div class="glass-dark badge-card rounded-full px-3.5 py-2 flex items-center gap-2.5 cursor-pointer hover:scale-105 transition-transform">
+                <div class="w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs border border-blue-400/30">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M14.314 0L2.3 12 6 15.7 21.684 0h-7.37zm7.37 12.002L15.372 18.31l6.312 6.315h7.371l-10-10 3.629-3.623h-7.37zM8.314 18.002l-3.63 3.626h7.372l3.629-3.626H8.314z"/>
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <div class="font-headline font-bold text-xs leading-none text-white badge-primary-text">Flutter Dev</div>
+                  <div class="text-[11px] text-slate-400 leading-tight mt-0.5 badge-sec-text">Dart • Riverpod</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ==============================================
+                 FLOATING BADGE 2: "8.4 CGPA" (Bottom-Right)
+                 ============================================== -->
+            <div class="badge-float-cgpa absolute bottom-2 -right-2 sm:bottom-6 sm:right-2 z-30">
+              <div class="glass-dark badge-card rounded-full px-3.5 py-2 flex items-center gap-2.5 cursor-pointer hover:scale-105 transition-transform">
+                <div class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs border border-amber-400/30">
+                  ★
+                </div>
+                <div class="text-left">
+                  <div class="font-headline font-bold text-xs leading-none text-white badge-primary-text">8.4 CGPA</div>
+                  <div class="text-[11px] text-slate-400 leading-tight mt-0.5 badge-sec-text">Engineering Academics</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ==============================================
+                 FLOATING BADGE 3: "Clean Architecture" (Bottom-Left)
+                 ============================================== -->
+            <div class="badge-float-cleanarch absolute bottom-0 left-6 sm:bottom-4 sm:left-10 z-30">
+              <div class="glass-dark badge-card rounded-full px-3.5 py-1.5 flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span>
+                <span class="font-headline font-semibold text-xs text-white badge-primary-text">Clean Architecture</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       KEY STATS METRICS STRIP
+       ========================================== -->
+  <section class="py-6 border-y border-white/5 bg-[#0B1526]/50 stats-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        
+        <div class="p-4 sm:p-5 rounded-2xl glass-dark stats-card border border-white/5">
+          <div class="font-headline font-bold text-2xl sm:text-3xl text-red-500">4+</div>
+          <div class="text-xs sm:text-sm font-semibold text-slate-200 mt-1 stats-label">Shipped Apps</div>
+          <div class="text-[11px] text-slate-400 stats-sub">Production on Play & App Stores</div>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-2xl glass-dark stats-card border border-white/5">
+          <div class="font-headline font-bold text-2xl sm:text-3xl text-white stats-number">8.4</div>
+          <div class="text-xs sm:text-sm font-semibold text-slate-200 mt-1 stats-label">Undergrad CGPA</div>
+          <div class="text-[11px] text-slate-400 stats-sub">Computer Science Engineering</div>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-2xl glass-dark stats-card border border-white/5">
+          <div class="font-headline font-bold text-2xl sm:text-3xl text-white stats-number">100+</div>
+          <div class="text-xs sm:text-sm font-semibold text-slate-200 mt-1 stats-label">DSA Solved</div>
+          <div class="text-[11px] text-slate-400 stats-sub">Algorithmic Problem Solving</div>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-2xl glass-dark stats-card border border-white/5">
+          <div class="font-headline font-bold text-2xl sm:text-3xl text-emerald-400">99.9%</div>
+          <div class="text-xs sm:text-sm font-semibold text-slate-200 mt-1 stats-label">Crash-Free Rate</div>
+          <div class="text-[11px] text-slate-400 stats-sub">Telemetry & Robust Unit Tests</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 01: ABOUT ME
+       ========================================== -->
+  <section id="about" class="py-20 md:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12 text-left">
+        <span class="font-mono-code text-xs font-semibold text-red-500 tracking-wider">01. // ABOUT ME</span>
+        <h2 class="font-headline text-2xl sm:text-4xl font-extrabold text-white mt-2 section-heading">
+          Passionate about <span class="text-red-500">building things</span> that matter to real users.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Narrative Body on Left -->
+        <div class="lg:col-span-7 space-y-4 text-slate-400 text-sm md:text-base leading-relaxed content-text">
+          <p>
+            I am a Computer Science & Engineering undergraduate student based in Delhi NCR/Noida, India. I specialize in building maintainable, high-impact mobile solutions using Flutter, Dart, Riverpod, BLoC and Clean Architecture principles.
+          </p>
+          <p>
+            Whether implementing complex state management systems, minimizing cold start latencies, or engineering seamless REST/GraphQL APIs, I prioritize 60/120 FPS performance and resilient crash-free reliability.
+          </p>
+          <p>
+            In tandem with code, I champion design systems in Figma: transforming wireframes into tangible design tokens, expressive typography, and micro-interactions that make an application feel alive in users' palms.
+          </p>
+
+          <!-- Quote Block -->
+          <div class="p-5 rounded-2xl bg-white/5 border-l-4 border-red-500 text-slate-300 italic text-sm mt-6 quote-box">
+            "I believe that code and UI/UX shouldn't just look good on paper; animations should feel alive, intuitive, and performant under every touch."
+          </div>
+        </div>
+
+        <!-- 3 Highlight Cards on Right -->
+        <div class="lg:col-span-5 space-y-4">
+          
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 feature-card">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-xl bg-red-500/10 text-red-400 text-base">🎓</span>
+              <div>
+                <h4 class="font-headline font-bold text-sm text-white card-title">Education</h4>
+                <p class="text-xs text-slate-400 card-desc">B.Tech in Computer Science & Engineering (2022 - 2026)</p>
+                <p class="text-xs font-semibold text-red-400 mt-0.5">Current CGPA: 8.4</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 feature-card">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-xl bg-blue-500/10 text-blue-400 text-base">📱</span>
+              <div>
+                <h4 class="font-headline font-bold text-sm text-white card-title">Mobile App Specialist</h4>
+                <p class="text-xs text-slate-400 card-desc">Flutter, Dart, Clean Arch, BLoC, Riverpod, Offline-First SQLite</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 feature-card">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-xl bg-purple-500/10 text-purple-400 text-base">🎨</span>
+              <div>
+                <h4 class="font-headline font-bold text-sm text-white card-title">Product & UI/UX Design</h4>
+                <p class="text-xs text-slate-400 card-desc">Figma Design Systems, Micro-interactions, Usability Architecture</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 02: MY TECH STACK
+       ========================================== -->
+  <section id="skills" class="py-20 md:py-28 bg-[#0B1526]/40 border-t border-white/5 skills-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12 text-left">
+        <span class="font-mono-code text-xs font-semibold text-red-500 tracking-wider">02. // TECH STACK</span>
+        <h2 class="font-headline text-2xl sm:text-4xl font-extrabold text-white mt-2 section-heading">
+          Technical Arsenal & Technologies
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Category 1: Languages -->
+        <div class="p-6 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition group skill-group-card">
+          <div class="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center font-bold text-lg mb-4">
+            &lt;/&gt;
+          </div>
+          <h3 class="font-headline font-bold text-base text-white mb-2 card-title">Languages</h3>
+          <p class="text-xs text-slate-400 mb-4 card-desc">Core syntactic foundations for robust, typed software engineering.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Dart</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">C++</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">JavaScript</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">TypeScript</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Python</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">HTML/CSS</span>
+          </div>
+        </div>
+
+        <!-- Category 2: Mobile Engineering -->
+        <div class="p-6 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition group skill-group-card">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold text-lg mb-4">
+            📱
+          </div>
+          <h3 class="font-headline font-bold text-base text-white mb-2 card-title">Mobile Engineering</h3>
+          <p class="text-xs text-slate-400 mb-4 card-desc">Cross-platform mobile applications with high FPS and clean architecture.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/30 skill-pill">Flutter</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Riverpod</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">BLoC</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Clean Arch</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">REST APIs</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Firebase SDK</span>
+          </div>
+        </div>
+
+        <!-- Category 3: Backend & DB -->
+        <div class="p-6 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition group skill-group-card">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-4">
+            🗄️
+          </div>
+          <h3 class="font-headline font-bold text-base text-white mb-2 card-title">Backend & Cloud</h3>
+          <p class="text-xs text-slate-400 mb-4 card-desc">Scalable cloud backends, databases, and authentication endpoints.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Node.js</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Express</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Firestore</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Supabase</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">PostgreSQL</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">SQLite</span>
+          </div>
+        </div>
+
+        <!-- Category 4: Tools & Design -->
+        <div class="p-6 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition group skill-group-card">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg mb-4">
+            🛠️
+          </div>
+          <h3 class="font-headline font-bold text-base text-white mb-2 card-title">Tools & Design</h3>
+          <p class="text-xs text-slate-400 mb-4 card-desc">Prototyping, version control, API testing, and deployment pipelines.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Figma</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Git / GitHub</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Postman</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">VS Code</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">Android Studio</span>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 skill-pill">CI/CD Actions</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 03: WORK HISTORY & CERTIFICATIONS
+       ========================================== -->
+  <section id="experience" class="py-20 md:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12 text-left">
+        <span class="font-mono-code text-xs font-semibold text-red-500 tracking-wider">03. // EXPERIENCE & CREDENTIALS</span>
+        <h2 class="font-headline text-2xl sm:text-4xl font-extrabold text-white mt-2 section-heading">
+          Work History & <span class="text-red-500">Certifications</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
+          Verified industry credentials, engineering milestones, and real-world project engagements.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Credential 1 -->
+        <div class="p-6 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition cert-card">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono-code px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              ● Certified 2024
+            </span>
+            <span class="text-xs text-slate-500 font-mono-code">ID: UIUX-2024-91</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg text-white card-title">UI/UX Design Certification</h3>
+          <p class="text-xs font-medium text-red-400 mt-1">Infotech Academy & Interaction Foundation</p>
+          <p class="text-sm text-slate-400 mt-3 leading-relaxed card-desc">
+            Mastered user research, wireframing, interactive prototyping in Figma, design systems token guidelines, and micro-interactions.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+            <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-400">Figma</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-400">Wireframing</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-400">Design Systems</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-400">User Testing</span>
+          </div>
+        </div>
+
+        <!-- Credential 2 -->
+        <div class="p-6 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition cert-card">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono-code px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              ● Certified 2023
+            </span>
+            <span class="text-xs text-slate-500 font-mono-code">Grade: 82.6% Distinction</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg text-white card-title">Flutter & Dart App Development</h3>
+          <p class="text-xs font-medium text-red-400 mt-1">Flutter Foundations & Professional Mobile Track</p>
+          <p class="text-sm text-slate-400 mt-3 leading-relaxed card-desc">
+            In-depth mobile application architecture covering Riverpod, BLoC, Clean Architecture, REST API integrations, Unit & Widget testing, and Play Store release protocols.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+            <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-400">Flutter</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-400">Dart</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-400">Riverpod</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-400">Clean Arch</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 04: MY JOURNEY & MILESTONES
+       ========================================== -->
+  <section id="journey" class="py-20 md:py-28 bg-[#0B1526]/40 border-t border-white/5 journey-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12 text-left">
+        <span class="font-mono-code text-xs font-semibold text-red-500 tracking-wider">04. // JOURNEY</span>
+        <h2 class="font-headline text-2xl sm:text-4xl font-extrabold text-white mt-2 section-heading">
+          My Journey & Milestones
+        </h2>
+      </div>
+
+      <!-- Vertical Timeline -->
+      <div class="relative border-l-2 border-slate-700/60 ml-4 sm:ml-8 pl-6 sm:pl-8 space-y-10 timeline-container">
+        
+        <!-- Timeline Item 1 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-red-600 border-4 border-[#070D18] shadow-md shadow-red-600/50"></div>
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition timeline-card">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h4 class="font-headline font-bold text-base text-white card-title">B.Tech Computer Science & Engineering</h4>
+              <span class="text-xs font-mono-code px-2.5 py-0.5 rounded bg-red-500/10 text-red-400">2022 - 2026 (Current)</span>
+            </div>
+            <p class="text-xs font-medium text-slate-400">Noida International University / Tech Campus</p>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed card-desc">
+              Specializing in mobile application development, core data structures, algorithms, and full-stack software integration. Maintaining a cumulative 8.4 CGPA while participating in software hackathons and engineering communities.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-600 border-4 border-[#070D18]"></div>
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition timeline-card">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h4 class="font-headline font-bold text-base text-white card-title">Flutter Developer Intern & Freelance</h4>
+              <span class="text-xs font-mono-code px-2.5 py-0.5 rounded bg-white/5 text-slate-400">2023 - 2024</span>
+            </div>
+            <p class="text-xs font-medium text-slate-400">Client Engagements & Independent Delivery</p>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed card-desc">
+              Designed and deployed production cross-platform client mobile apps. Integrated Firebase backends, payment gateways, live geolocation tracking, and automated CI/CD builds for testing and distribution.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-600 border-4 border-[#070D18]"></div>
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 hover:border-red-500/30 transition timeline-card">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h4 class="font-headline font-bold text-base text-white card-title">Flutter Foundations & Mobile Certification</h4>
+              <span class="text-xs font-mono-code px-2.5 py-0.5 rounded bg-white/5 text-slate-400">2023</span>
+            </div>
+            <p class="text-xs font-medium text-slate-400">Distinction Grade (82.6%)</p>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed card-desc">
+              Completed rigorous curriculum with distinction in Riverpod, Advanced Animations, and Custom Canvas layout principles. Crafted real-world project portfolios that laid the groundwork for production applications.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 05: THINGS I'VE BUILT (PROJECTS)
+       ========================================== -->
+  <section id="projects" class="py-20 md:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="text-left">
+          <span class="font-mono-code text-xs font-semibold text-red-500 tracking-wider">05. // PROJECTS</span>
+          <h2 class="font-headline text-2xl sm:text-4xl font-extrabold text-white mt-2 section-heading">
+            Things I've <span class="text-red-500">Built</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
+            A collection of cross-platform applications, real-time communication tools, and UI/UX clones crafted with purpose and production quality.
+          </p>
+        </div>
+
+        <!-- Interactive Category Filter Pills -->
+        <div class="flex flex-wrap items-center gap-2" id="projectFilters">
+          <button onclick="filterProjects('all')" class="filter-btn active px-3.5 py-1.5 rounded-full text-xs font-semibold bg-red-600 text-white transition">
+            All (4)
+          </button>
+          <button onclick="filterProjects('mobile')" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white transition">
+            Mobile Apps
+          </button>
+          <button onclick="filterProjects('web')" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white transition">
+            Web Dev
+          </button>
+          <button onclick="filterProjects('ui')" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white transition">
+            UI Clones
+          </button>
+        </div>
+      </div>
+
+      <!-- Projects Grid (4 Cards from Screenshots) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsGrid">
+        
+        <!-- PROJECT 1: TrackFlow -->
+        <div class="project-item mobile rounded-2xl glass-dark border border-white/5 overflow-hidden hover:border-red-500/30 transition group flex flex-col justify-between">
+          <div>
+            <!-- Project Mockup Graphic Banner -->
+            <div class="h-52 bg-gradient-to-tr from-slate-900 to-slate-800 relative overflow-hidden flex items-center justify-center p-6 border-b border-white/5">
+              <div class="absolute inset-0 bg-red-600/5 group-hover:bg-red-600/10 transition"></div>
+              <div class="w-36 h-48 rounded-xl bg-slate-950 border border-slate-700 shadow-2xl p-2.5 flex flex-col justify-between transform group-hover:-translate-y-2 transition-transform duration-300">
+                <div class="flex items-center justify-between text-[9px] text-slate-400">
+                  <span>TrackFlow</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                </div>
+                <div class="space-y-1.5 my-auto">
+                  <div class="h-2 rounded bg-red-500/40 w-3/4"></div>
+                  <div class="h-2 rounded bg-slate-800 w-full"></div>
+                  <div class="h-2 rounded bg-slate-800 w-5/6"></div>
+                </div>
+                <div class="h-3 rounded bg-white/10 w-full text-[8px] text-center text-slate-400 font-mono-code">Play Store v2.4</div>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono-code text-red-400">● FEATURED MOBILE PROJECT</span>
+                <span class="text-xs text-slate-500 font-mono-code">v2.4.0</span>
+              </div>
+              <h3 class="font-headline font-bold text-xl text-white card-title">TrackFlow</h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed card-desc">
+                Productivity and task management application with custom calendar scheduling, personal finance analytics, and animated splash transitions. Prepared for Play Console deployment.
+              </p>
+              
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Flutter</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Riverpod</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Firebase</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Play Console</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 flex items-center gap-3">
+            <a href="#contact" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium text-xs transition">
+              Live Demo ↗
+            </a>
+            <a href="https://github.com/adarsh-dev" target="_blank" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs transition border border-white/10 sec-btn">
+              Source Code &lt; &gt;
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: ConnectCall -->
+        <div class="project-item mobile rounded-2xl glass-dark border border-white/5 overflow-hidden hover:border-red-500/30 transition group flex flex-col justify-between">
+          <div>
+            <div class="h-52 bg-gradient-to-tr from-slate-900 via-blue-950/40 to-slate-900 relative overflow-hidden flex items-center justify-center p-6 border-b border-white/5">
+              <div class="w-36 h-48 rounded-xl bg-slate-950 border border-slate-700 shadow-2xl p-2.5 flex flex-col justify-between transform group-hover:-translate-y-2 transition-transform duration-300">
+                <div class="flex items-center justify-between text-[9px] text-emerald-400">
+                  <span>● LIVE P2P</span>
+                  <span class="text-slate-400">Agora RTC</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1 my-auto">
+                  <div class="h-10 bg-slate-800 rounded"></div>
+                  <div class="h-10 bg-slate-800 rounded"></div>
+                </div>
+                <div class="flex justify-center gap-2">
+                  <span class="w-4 h-4 rounded-full bg-red-600"></span>
+                  <span class="w-4 h-4 rounded-full bg-emerald-600"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono-code text-emerald-400">● REAL-TIME RTC ENGINE</span>
+                <span class="text-xs text-slate-500 font-mono-code">WebRTC P2P</span>
+              </div>
+              <h3 class="font-headline font-bold text-xl text-white card-title">ConnectCall</h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed card-desc">
+                Real-time audio and video calling application built with Agora RTC engine, WebRTC protocols, Firebase Cloud Messaging, and native flutter_callkit_incoming integration.
+              </p>
+              
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Flutter</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">WebRTC</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Agora RTC</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">CallKit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 flex items-center gap-3">
+            <a href="#contact" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium text-xs transition">
+              Live Demo ↗
+            </a>
+            <a href="https://github.com/adarsh-dev" target="_blank" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs transition border border-white/10 sec-btn">
+              Architecture ⊞
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: WidgetX -->
+        <div class="project-item web rounded-2xl glass-dark border border-white/5 overflow-hidden hover:border-red-500/30 transition group flex flex-col justify-between">
+          <div>
+            <div class="h-52 bg-gradient-to-tr from-slate-900 to-red-950/20 relative overflow-hidden flex items-center justify-center p-6 border-b border-white/5">
+              <div class="w-64 h-36 rounded-xl bg-slate-950 border border-slate-700 shadow-2xl p-2.5 flex flex-col justify-between transform group-hover:-translate-y-2 transition-transform duration-300">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                  <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span class="text-[9px] text-slate-500 ml-2 font-mono-code">canvas_shader.frag</span>
+                </div>
+                <div class="h-14 bg-red-500/10 rounded border border-red-500/20 flex items-center justify-center text-xs font-headline font-bold text-red-400">
+                  WidgetX 60 FPS Canvas
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono-code text-red-400">● WEB DEV & SHADERS</span>
+                <span class="text-xs text-slate-500 font-mono-code">Web Canvas 4K</span>
+              </div>
+              <h3 class="font-headline font-bold text-xl text-white card-title">WidgetX</h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed card-desc">
+                Responsive animated web developer portfolio and showcase platform featuring high-performance custom canvas shaders, fluid navigation transitions, and automated deployment pipelines.
+              </p>
+              
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Flutter Web</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Firebase Hosting</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Custom Canvas</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 flex items-center gap-3">
+            <a href="#contact" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium text-xs transition">
+              Live Demo ↗
+            </a>
+            <a href="https://github.com/adarsh-dev" target="_blank" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs transition border border-white/10 sec-btn">
+              Case Study 📖
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 4: Favourite Place -->
+        <div class="project-item ui mobile rounded-2xl glass-dark border border-white/5 overflow-hidden hover:border-red-500/30 transition group flex flex-col justify-between">
+          <div>
+            <div class="h-52 bg-gradient-to-tr from-slate-900 to-emerald-950/20 relative overflow-hidden flex items-center justify-center p-6 border-b border-white/5">
+              <div class="w-36 h-48 rounded-xl bg-slate-950 border border-slate-700 shadow-2xl p-2.5 flex flex-col justify-between transform group-hover:-translate-y-2 transition-transform duration-300">
+                <div class="flex items-center justify-between text-[9px] text-slate-400">
+                  <span>GPS Resolved</span>
+                  <span class="text-emerald-400">📍 GeoTag</span>
+                </div>
+                <div class="h-20 bg-slate-800 rounded relative overflow-hidden flex items-center justify-center text-[10px] text-slate-400">
+                  Camera Feed
+                </div>
+                <div class="h-3 rounded bg-white/10 w-full text-[8px] text-center text-slate-400">SQLite Offline Sync</div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono-code text-emerald-400">● NATIVE HARDWARE INTEGRATION</span>
+                <span class="text-xs text-slate-500 font-mono-code">Camera + GPS</span>
+              </div>
+              <h3 class="font-headline font-bold text-xl text-white card-title">Favourite Place</h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed card-desc">
+                Location saving app using hardware camera integration, geotagging coordinate resolution, and local disk persistence state management for offline discovery.
+              </p>
+              
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Flutter</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">SharedPreferences</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Riverpod</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-md bg-white/5 text-slate-300">Geolocator</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 flex items-center gap-3">
+            <a href="#contact" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium text-xs transition">
+              Live Demo ↗
+            </a>
+            <a href="https://github.com/adarsh-dev" target="_blank" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs transition border border-white/10 sec-btn">
+              Releases 📦
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 06: CONTACT ME (LET'S WORK TOGETHER)
+       ========================================== -->
+  <section id="contact" class="py-20 md:py-28 bg-[#0B1526]/50 border-t border-white/5 contact-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12 text-left">
+        <span class="font-mono-code text-xs font-semibold text-red-500 tracking-wider">06. // CONTACT</span>
+        <h2 class="font-headline text-2xl sm:text-4xl font-extrabold text-white mt-2 section-heading">
+          Let's Work <span class="text-red-500">Together</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
+          Have a project in mind or looking for a passionate Flutter developer? I'd love to discuss your vision.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left: Direct Contact Information Cards -->
+        <div class="lg:col-span-5 space-y-4">
+          
+          <!-- Email Card with Copy Button -->
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 flex items-center justify-between contact-card">
+            <div>
+              <p class="text-[11px] font-mono-code text-slate-400">DIRECT EMAIL</p>
+              <p class="text-sm font-semibold text-white mt-0.5 card-title" id="emailVal">contact@adarsh.dev</p>
+            </div>
+            <button onclick="copyToClipboard('contact@adarsh.dev', this)" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-slate-300 hover:text-white transition">
+              Copy
+            </button>
+          </div>
+
+          <!-- Phone Card -->
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 flex items-center justify-between contact-card">
+            <div>
+              <p class="text-[11px] font-mono-code text-slate-400">PHONE / WHATSAPP</p>
+              <p class="text-sm font-semibold text-white mt-0.5 card-title">+91 98765 43210</p>
+            </div>
+            <a href="tel:+919876543210" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-slate-300 hover:text-white transition">
+              Call ↗
+            </a>
+          </div>
+
+          <!-- Location Card -->
+          <div class="p-5 rounded-2xl glass-dark border border-white/5 contact-card">
+            <p class="text-[11px] font-mono-code text-slate-400">GEOGRAPHIC BASE</p>
+            <p class="text-sm font-semibold text-white mt-0.5 card-title">Noida, Delhi NCR, India (IST +5:30)</p>
+            <p class="text-xs text-slate-400 mt-1 card-desc">Available for remote contracts and on-site engineering worldwide.</p>
+          </div>
+
+          <!-- Channels Ecosystem Grid -->
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <a href="https://linkedin.com/in/adarsh-gupta" target="_blank" class="p-4 rounded-xl glass-dark border border-white/5 hover:border-red-500/30 transition text-center contact-card">
+              <span class="text-sm font-semibold text-white block card-title">LinkedIn</span>
+              <span class="text-[11px] text-slate-400 block mt-0.5 card-desc">in/adarsh-gupta ↗</span>
+            </a>
+            <a href="https://github.com/adarsh-dev" target="_blank" class="p-4 rounded-xl glass-dark border border-white/5 hover:border-red-500/30 transition text-center contact-card">
+              <span class="text-sm font-semibold text-white block card-title">GitHub</span>
+              <span class="text-[11px] text-slate-400 block mt-0.5 card-desc">github.com/adarsh-dev ↗</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right: Interactive Contact Form -->
+        <div class="lg:col-span-7">
+          <form id="contactForm" onsubmit="handleFormSubmit(event)" class="p-6 md:p-8 rounded-2xl glass-dark border border-white/5 space-y-4 contact-form-card">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5 form-label">First Name</label>
+                <input type="text" required placeholder="John" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:border-red-500 focus:outline-none text-sm text-white placeholder-slate-500 form-input">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5 form-label">Last Name</label>
+                <input type="text" required placeholder="Doe" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:border-red-500 focus:outline-none text-sm text-white placeholder-slate-500 form-input">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5 form-label">Email Address</label>
+              <input type="email" required placeholder="john@example.com" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:border-red-500 focus:outline-none text-sm text-white placeholder-slate-500 form-input">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5 form-label">Project Domain / Scope</label>
+              <select class="w-full px-4 py-2.5 rounded-xl bg-[#0d1c32] border border-white/10 focus:border-red-500 focus:outline-none text-sm text-white form-input">
+                <option>Mobile App (Flutter / Clean Arch)</option>
+                <option>UI/UX Design & Figma Systems</option>
+                <option>Full-Stack Web or Consulting</option>
+                <option>Job Opportunity / Recruitment</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5 form-label">Your Message</label>
+              <textarea rows="4" required placeholder="Tell me about your project, timeline, and architectural requirements..." class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:border-red-500 focus:outline-none text-sm text-white placeholder-slate-500 form-input"></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm transition shadow-lg shadow-red-600/30 flex items-center justify-center gap-2">
+              <span>Send Message 🚀</span>
+            </button>
+            
+            <p id="formFeedback" class="hidden text-xs text-center text-emerald-400 font-medium pt-2">
+              ✓ Message dispatched successfully! Adarsh will respond within 24 hours.
+            </p>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER & SYSTEM TELEMETRY
+       ========================================== -->
+  <footer class="py-10 border-t border-white/5 bg-[#070D18] text-xs text-slate-500 footer-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div>
+        <p class="font-headline font-bold text-white text-sm footer-title">Adarsh Mahesh Gupta</p>
+        <p class="mt-0.5">© 2025 Adarsh Mahesh Gupta. Precision engineered with clean architecture.</p>
+      </div>
+
+      <!-- Telemetry status indicator -->
+      <div class="flex items-center gap-4 font-mono-code text-[11px] text-slate-400">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          FPS_TARGET: 120HZ
+        </span>
+        <span>LATENCY: 12MS</span>
+        <span>SYS_BOOT: STABLE</span>
+      </div>
+
+      <!-- Back to Top Button -->
+      <a href="#hero" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition" title="Back to Top">
+        ↑
+      </a>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT LOGIC
+       Theme Toggle, Filters, Copy, Form
+       ========================================== -->
+  <script>
+    let isLightMode = false;
+
+    // Mobile Drawer Toggle
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // Light / Dark Mode Toggle
+    function toggleGlobalTheme() {
+      isLightMode = !isLightMode;
+      const body = document.getElementById('appBody');
+      const navbar = document.getElementById('topNavbar');
+      const icon = document.getElementById('themeToggleIcon');
+      const cards = document.querySelectorAll('.glass-dark, .glass-light');
+      const cardTitles = document.querySelectorAll('.card-title');
+      const cardDescs = document.querySelectorAll('.card-desc');
+      const sectionHeadings = document.querySelectorAll('.section-heading');
+      const formLabels = document.querySelectorAll('.form-label');
+      const formInputs = document.querySelectorAll('.form-input');
+      const badgePrimary = document.querySelectorAll('.badge-primary-text');
+      const badgeSec = document.querySelectorAll('.badge-sec-text');
+      const secButtons = document.querySelectorAll('.sec-btn');
+      const heroName = document.querySelector('.hero-main-name');
+      const heroSub = document.querySelector('.hero-sub-title');
+      const heroBio = document.querySelector('.hero-bio-copy');
+      const statsNumbers = document.querySelectorAll('.stats-number');
+      const statsLabels = document.querySelectorAll('.stats-label');
+      const statsSubs = document.querySelectorAll('.stats-sub');
+      const footerTitle = document.querySelector('.footer-title');
+      const quoteBox = document.querySelector('.quote-box');
+      const outerOrbit = document.getElementById('outerOrbit');
+
+      if (isLightMode) {
+        // Switch to Light Mode (Aerospace Modernist #F0F4F8)
+        body.classList.remove('bg-[#070D18]', 'text-slate-100');
+        body.classList.add('bg-[#F0F4F8]', 'text-[#0A192F]');
+
+        navbar.classList.remove('bg-[#070D18]/85', 'border-white/5');
+        navbar.classList.add('bg-white/90', 'border-slate-200', 'shadow-sm');
+
+        heroName.classList.remove('text-white');
+        heroName.classList.add('text-[#0A192F]');
+
+        heroSub.classList.remove('text-slate-300');
+        heroSub.classList.add('text-[#1E293B]');
+
+        heroBio.classList.remove('text-slate-400');
+        heroBio.classList.add('text-[#475569]');
+
+        outerOrbit.classList.remove('border-slate-700/60');
+        outerOrbit.classList.add('border-slate-300');
+
+        cards.forEach(c => {
+          c.classList.remove('glass-dark', 'border-white/5');
+          c.classList.add('glass-light', 'border-slate-200');
+        });
+
+        cardTitles.forEach(t => {
+          t.classList.remove('text-white');
+          t.classList.add('text-[#0A192F]');
+        });
+
+        cardDescs.forEach(d => {
+          d.classList.remove('text-slate-400');
+          d.classList.add('text-[#475569]');
+        });
+
+        sectionHeadings.forEach(h => {
+          h.classList.remove('text-white');
+          h.classList.add('text-[#0A192F]');
+        });
+
+        badgePrimary.forEach(b => {
+          b.classList.remove('text-white');
+          b.classList.add('text-[#0A192F]');
+        });
+
+        badgeSec.forEach(b => {
+          b.classList.remove('text-slate-400');
+          b.classList.add('text-[#64748B]');
+        });
+
+        statsNumbers.forEach(n => {
+          n.classList.remove('text-white');
+          n.classList.add('text-[#0A192F]');
+        });
+
+        statsLabels.forEach(l => {
+          l.classList.remove('text-slate-200');
+          l.classList.add('text-[#0A192F]');
+        });
+
+        statsSubs.forEach(s => {
+          s.classList.remove('text-slate-400');
+          s.classList.add('text-[#64748B]');
+        });
+
+        formLabels.forEach(l => {
+          l.classList.remove('text-slate-300');
+          l.classList.add('text-[#0A192F]');
+        });
+
+        formInputs.forEach(i => {
+          i.classList.remove('bg-white/5', 'border-white/10', 'text-white');
+          i.classList.add('bg-white', 'border-slate-300', 'text-[#0A192F]');
+        });
+
+        secButtons.forEach(btn => {
+          btn.classList.remove('bg-white/5', 'text-slate-200', 'border-white/10');
+          btn.classList.add('bg-white', 'text-[#0A192F]', 'border-slate-300');
+        });
+
+        if (quoteBox) {
+          quoteBox.classList.remove('bg-white/5', 'text-slate-300');
+          quoteBox.classList.add('bg-slate-100', 'text-[#0A192F]');
+        }
+
+        if (footerTitle) {
+          footerTitle.classList.remove('text-white');
+          footerTitle.classList.add('text-[#0A192F]');
+        }
+
+        icon.textContent = '🌙';
+      } else {
+        // Revert to Dark Mode
+        body.classList.add('bg-[#070D18]', 'text-slate-100');
+        body.classList.remove('bg-[#F0F4F8]', 'text-[#0A192F]');
+
+        navbar.classList.add('bg-[#070D18]/85', 'border-white/5');
+        navbar.classList.remove('bg-white/90', 'border-slate-200', 'shadow-sm');
+
+        heroName.classList.add('text-white');
+        heroName.classList.remove('text-[#0A192F]');
+
+        heroSub.classList.add('text-slate-300');
+        heroSub.classList.remove('text-[#1E293B]');
+
+        heroBio.classList.add('text-slate-400');
+        heroBio.classList.remove('text-[#475569]');
+
+        outerOrbit.classList.add('border-slate-700/60');
+        outerOrbit.classList.remove('border-slate-300');
+
+        cards.forEach(c => {
+          c.classList.add('glass-dark', 'border-white/5');
+          c.classList.remove('glass-light', 'border-slate-200');
+        });
+
+        cardTitles.forEach(t => {
+          t.classList.add('text-white');
+          t.classList.remove('text-[#0A192F]');
+        });
+
+        cardDescs.forEach(d => {
+          d.classList.add('text-slate-400');
+          d.classList.remove('text-[#475569]');
+        });
+
+        sectionHeadings.forEach(h => {
+          h.classList.add('text-white');
+          h.classList.remove('text-[#0A192F]');
+        });
+
+        badgePrimary.forEach(b => {
+          b.classList.add('text-white');
+          b.classList.remove('text-[#0A192F]');
+        });
+
+        badgeSec.forEach(b => {
+          b.classList.add('text-slate-400');
+          b.classList.remove('text-[#64748B]');
+        });
+
+        statsNumbers.forEach(n => {
+          n.classList.add('text-white');
+          n.classList.remove('text-[#0A192F]');
+        });
+
+        statsLabels.forEach(l => {
+          l.classList.add('text-slate-200');
+          l.classList.remove('text-[#0A192F]');
+        });
+
+        statsSubs.forEach(s => {
+          s.classList.add('text-slate-400');
+          s.classList.remove('text-[#64748B]');
+        });
+
+        formLabels.forEach(l => {
+          l.classList.add('text-slate-300');
+          l.classList.remove('text-[#0A192F]');
+        });
+
+        formInputs.forEach(i => {
+          i.classList.add('bg-white/5', 'border-white/10', 'text-white');
+          i.classList.remove('bg-white', 'border-slate-300', 'text-[#0A192F]');
+        });
+
+        secButtons.forEach(btn => {
+          btn.classList.add('bg-white/5', 'text-slate-200', 'border-white/10');
+          btn.classList.remove('bg-white', 'text-[#0A192F]', 'border-slate-300');
+        });
+
+        if (quoteBox) {
+          quoteBox.classList.add('bg-white/5', 'text-slate-300');
+          quoteBox.classList.remove('bg-slate-100', 'text-[#0A192F]');
+        }
+
+        if (footerTitle) {
+          footerTitle.classList.add('text-white');
+          footerTitle.classList.remove('text-[#0A192F]');
+        }
+
+        icon.textContent = '☀️';
+      }
+    }
+
+    // Project Filtering Logic
+    function filterProjects(category) {
+      const items = document.querySelectorAll('.project-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-red-600', 'text-white');
+        btn.classList.add('bg-white/5', 'text-slate-400');
+      });
+      event.target.classList.add('bg-red-600', 'text-white');
+      event.target.classList.remove('bg-white/5', 'text-slate-400');
+
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // 1-Click Copy Feedback
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('bg-emerald-500/20', 'text-emerald-400');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove('bg-emerald-500/20', 'text-emerald-400');
+        }, 2000);
+      });
+    }
+
+    // Contact Form Submission Feedback
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const feedback = document.getElementById('formFeedback');
+      btn.innerHTML = 'Sending...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = 'Sent ✓';
+        feedback.classList.remove('hidden');
+        e.target.reset();
+        setTimeout(() => {
+          btn.innerHTML = 'Send Message 🚀';
+          btn.disabled = false;
+        }, 3000);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
