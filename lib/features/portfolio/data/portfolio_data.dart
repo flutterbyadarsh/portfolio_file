@@ -152,6 +152,23 @@ class PortfolioData {
   static const String phone = '+91 9137425943';
   static const String telUri = 'tel:+919137425943';
   static const String location = 'PUNE & NOIDA, INDIA (IST)';
+  static const String portfolioUrl = 'https://adarshgupta.info';
+  static const String profileShareUrl = 'https://adarshgupta.info/#/follow';
+
+  static const String shareMessage =
+      'Connect with Adarsh Gupta — Flutter Developer & Mobile Architect:\nhttps://adarshgupta.info';
+
+  static String get whatsappShareUrl =>
+      'https://api.whatsapp.com/send?text=${Uri.encodeComponent(shareMessage)}';
+
+  static String get telegramShareUrl =>
+      'https://t.me/share/url?url=${Uri.encodeComponent(portfolioUrl)}&text=${Uri.encodeComponent("Adarsh Gupta — Flutter Developer Portfolio")}';
+
+  static String get twitterShareUrl =>
+      'https://twitter.com/intent/tweet?text=${Uri.encodeComponent("Check out Adarsh Gupta portfolio:")}&url=${Uri.encodeComponent(portfolioUrl)}';
+
+  static String get linkedinShareUrl =>
+      'https://www.linkedin.com/sharing/share-offsite/?url=${Uri.encodeComponent(portfolioUrl)}';
 
   // Social & Profile URLs (swap in exact handles/PDF links anytime)
   static const String githubDisplayHandle = 'github.com/flutterbyadarsh';

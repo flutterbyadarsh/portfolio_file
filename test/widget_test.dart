@@ -185,6 +185,21 @@ void main() {
     await tester.pump(const Duration(milliseconds: 600));
     expect(find.text('CHANNELS & ECOSYSTEM'), findsOneWidget);
 
+    // Tap SHARE CARD to open multi-app share sheet (WhatsApp, Telegram, Copy, etc.)
+    final shareCardBtn = find.text('SHARE CARD');
+    await tester.ensureVisible(shareCardBtn);
+    await tester.pump();
+    await tester.tap(shareCardBtn);
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Share Profile Card'), findsOneWidget);
+    expect(find.text('WhatsApp'), findsOneWidget);
+    expect(find.text('Copy Link'), findsOneWidget);
+    await tester.tap(find.byTooltip('Close'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Share Profile Card'), findsNothing);
+
     // Return home
     await tester.tap(find.text('BACK TO PORTFOLIO'));
     await tester.pump();

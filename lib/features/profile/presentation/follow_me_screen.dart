@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:adarsh_portfolio/core/theme/aerospace_theme.dart';
 import 'package:adarsh_portfolio/core/utils/external_launcher.dart';
 import 'package:adarsh_portfolio/features/portfolio/data/portfolio_data.dart';
@@ -37,6 +38,277 @@ class FollowMeScreen extends StatelessWidget {
         content: Text(label),
         behavior: SnackBarBehavior.floating,
       ),
+    );
+  }
+
+  void _openShareCardSheet(BuildContext context) {
+    final palette = AerospacePalette.of(context);
+
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (sheetCtx) {
+        return Container(
+          decoration: BoxDecoration(
+            color: palette.surfaceElevated,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+            border: Border.all(color: palette.hairline),
+            boxShadow: palette.cardShadow,
+          ),
+          padding: EdgeInsets.fromLTRB(
+            24,
+            16,
+            24,
+            MediaQuery.viewPaddingOf(sheetCtx).bottom + 24,
+          ),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 540),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Container(
+                    width: 44,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: palette.hairline,
+                      borderRadius: BorderRadius.circular(999),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 18),
+                Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: AerospaceTheme.accentScarlet
+                            .withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Icon(
+                        Icons.share_rounded,
+                        color: AerospaceTheme.accentScarlet,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Share Profile Card',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w800,
+                              color: palette.textPrimary,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            'Connect with Adarsh Gupta across any app or chat',
+                            style: TextStyle(
+                              fontSize: 12.5,
+                              color: palette.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: 'Close',
+                      onPressed: () => Navigator.of(sheetCtx).pop(),
+                      icon: Icon(
+                        Icons.close_rounded,
+                        color: palette.textSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+
+                // Link Preview & Copy Row
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: palette.surface,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: palette.hairline),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.link_rounded,
+                        size: 18,
+                        color: AerospaceTheme.accentScarlet,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          PortfolioData.profileShareUrl,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontFamily: 'monospace',
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w600,
+                            color: palette.textPrimary,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      FilledButton.icon(
+                        onPressed: () {
+                          Clipboard.setData(
+                            const ClipboardData(
+                              text: PortfolioData.profileShareUrl,
+                            ),
+                          );
+                          Navigator.of(sheetCtx).pop();
+                          _notifyAction(
+                            context,
+                            'Profile link copied to clipboard!',
+                          );
+                        },
+                        style: FilledButton.styleFrom(
+                          minimumSize: const Size(0, 36),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                        ),
+                        icon: const Icon(Icons.copy_rounded, size: 14),
+                        label: const Text(
+                          'Copy Link',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 18),
+
+                Text(
+                  'OR SHARE DIRECTLY TO',
+                  style: TextStyle(
+                    fontFamily: 'monospace',
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.1,
+                    color: palette.textSecondary,
+                  ),
+                ),
+                const SizedBox(height: 12),
+
+                // Direct App Share Options
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: [
+                    _ShareAppChip(
+                      icon: Icons.chat_rounded,
+                      label: 'WhatsApp',
+                      accentColor: const Color(0xFF25D366),
+                      onTap: () {
+                        Navigator.of(sheetCtx).pop();
+                        launchExternalLink(
+                          context,
+                          PortfolioData.whatsappShareUrl,
+                        );
+                      },
+                    ),
+                    _ShareAppChip(
+                      icon: Icons.devices_rounded,
+                      label: 'System Share (All Apps)',
+                      accentColor: AerospaceTheme.accentScarlet,
+                      onTap: () async {
+                        Navigator.of(sheetCtx).pop();
+                        try {
+                          await SharePlus.instance.share(
+                            ShareParams(
+                              text: PortfolioData.shareMessage,
+                              subject: 'Adarsh Gupta — Flutter Developer Portfolio',
+                            ),
+                          );
+                        } catch (_) {
+                          Clipboard.setData(
+                            const ClipboardData(
+                              text: PortfolioData.shareMessage,
+                            ),
+                          );
+                          if (context.mounted) {
+                            _notifyAction(
+                              context,
+                              'Profile details copied to clipboard!',
+                            );
+                          }
+                        }
+                      },
+                    ),
+                    _ShareAppChip(
+                      icon: Icons.send_rounded,
+                      label: 'Telegram',
+                      accentColor: const Color(0xFF229ED9),
+                      onTap: () {
+                        Navigator.of(sheetCtx).pop();
+                        launchExternalLink(
+                          context,
+                          PortfolioData.telegramShareUrl,
+                        );
+                      },
+                    ),
+                    _ShareAppChip(
+                      icon: Icons.business_center_rounded,
+                      label: 'LinkedIn',
+                      accentColor: const Color(0xFF0A66C2),
+                      onTap: () {
+                        Navigator.of(sheetCtx).pop();
+                        launchExternalLink(
+                          context,
+                          PortfolioData.linkedinShareUrl,
+                        );
+                      },
+                    ),
+                    _ShareAppChip(
+                      icon: Icons.alternate_email_rounded,
+                      label: 'Twitter / X',
+                      accentColor: palette.isDark ? Colors.white : Colors.black,
+                      onTap: () {
+                        Navigator.of(sheetCtx).pop();
+                        launchExternalLink(
+                          context,
+                          PortfolioData.twitterShareUrl,
+                        );
+                      },
+                    ),
+                    _ShareAppChip(
+                      icon: Icons.copy_all_rounded,
+                      label: 'Copy Card Text',
+                      accentColor: AerospaceTheme.accentScarlet,
+                      onTap: () {
+                        Clipboard.setData(
+                          const ClipboardData(
+                            text: PortfolioData.shareMessage,
+                          ),
+                        );
+                        Navigator.of(sheetCtx).pop();
+                        _notifyAction(
+                          context,
+                          'Profile text & link copied to clipboard!',
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -125,17 +397,7 @@ class FollowMeScreen extends StatelessWidget {
                                     ),
                                   ),
                                   OutlinedButton.icon(
-                                    onPressed: () {
-                                      Clipboard.setData(
-                                        const ClipboardData(
-                                          text: 'https://adarsh.dev/follow',
-                                        ),
-                                      );
-                                      _notifyAction(
-                                        context,
-                                        'Profile card link copied to clipboard',
-                                      );
-                                    },
+                                    onPressed: () => _openShareCardSheet(context),
                                     style: OutlinedButton.styleFrom(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 14,
@@ -595,6 +857,61 @@ class FollowMeScreen extends StatelessWidget {
               const AerospaceFooter(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ShareAppChip extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color accentColor;
+  final VoidCallback onTap;
+
+  const _ShareAppChip({
+    required this.icon,
+    required this.label,
+    required this.accentColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = AerospacePalette.of(context);
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(
+          color: palette.surface,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: palette.hairline),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 26,
+              height: 26,
+              decoration: BoxDecoration(
+                color: accentColor.withValues(alpha: 0.18),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, size: 14, color: accentColor),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 12.5,
+                fontWeight: FontWeight.w700,
+                color: palette.textPrimary,
+              ),
+            ),
+          ],
         ),
       ),
     );
