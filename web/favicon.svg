@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071222"/>
+      <stop offset="55%" stop-color="#0A192F"/>
+      <stop offset="100%" stop-color="#132B50"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="52%" cy="50%" r="48%">
+      <stop offset="0%" stop-color="#DC2626" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#DC2626" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="6" y="6" width="500" height="500" rx="112" fill="url(#bg)" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="10"/>
+  <rect x="6" y="6" width="500" height="500" rx="112" fill="url(#glow)"/>
+  <circle cx="256" cy="256" r="194" fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="8"/>
+  <path d="M 304 68 A 194 194 0 0 1 446 218" fill="none" stroke="#EF4444" stroke-opacity="0.78" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="397" cy="123" r="22" fill="#EF4444"/>
+  <text x="256" y="328" text-anchor="middle" font-family="'Avenir Next', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="224" letter-spacing="-8">
+    <tspan fill="#FFFFFF">A</tspan><tspan fill="#EF4444">G</tspan>
+  </text>
+</svg>
